@@ -1,32 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Login Register System PHP</title>
-	<link rel="stylesheet" href="inc/bootstrap.min.css">
-	<script src="inc/jquery.min.js"></script>
-	<script src="inc/bootstrap.min.js"></script>
-</head>
-<body>
-	<div class="container">
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="index.php">Login Register System PHP & PDO</a>
-				</div>
-				<ul class="nav navbar-nav pull-right">
-					<li><a href="profile.php">Profile</a></li>
-					<li><a href="#">Logout</a></li>
-					<li><a href="login.php">Login</a></li>
-					<li><a href="register.php">Register</a></li>
-				</ul>
+<?php 
+include 'inc/header.php';
 
+?>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h2>User List <span class="pull-right"><strong>Welcome! </strong>Monir</span></h2>
 			</div>
-		</nav>
-		<!-- Body Text -->
-		<div class="well">
-			<h3>Website: www.iammonir.me<span class="pull-right">Like Us: www.facebook.com/monirdhk.it</span></h3>
+			<div class="panel-body">
+				<table class="table table-striped">
+					<tr>
+					<th width="20%">Sl</th>
+					<th width="20%">Name</th>
+					<th width="20%">Username</th>
+					<th width="20%">Email Address</th>
+					<th width="20%">Action</th>
+					</tr>
+					<tr>
+						<td>01</td>
+						<td>Md. Monirul Islam</td>
+						<td>monirdhk.it</td>
+						<td>monirdhk.it@gmail.com</td>
+						<td>
+							<a class="btn btn-primary" href="profile.php?id=1">View</a>
+						</td>
+					</tr>
+					<tr>
+						<td>02</td>
+						<td>Md. Nurul Islam</td>
+						<td>nuruldhk.it</td>
+						<td>nuruldhk.it@gmail.com</td>
+						<td>
+							<a class="btn btn-primary" href="profile.php?id=1">View</a>
+						</td>
+					</tr>
+					<tr>
+						<td>03</td>
+						<td>Md. Mahfuz Sumon</td>
+						<td>monirdhk.it</td>
+						<td>monirdhk.it@gmail.com</td>
+						<td>
+							<a class="btn btn-primary" href="profile.php?id=1">View</a>
+						</td>
+					</tr>
+				</table>
+			</div>
 		</div>
-	</div>
-</body>
-</html>
+		<!-- Body Text -->
+		<?php
+include 'inc/footer.php';
+		?>
