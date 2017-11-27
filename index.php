@@ -1,10 +1,28 @@
 <?php 
 include 'inc/header.php';
+include 'lib/User.php';
+Session::checkSession();
+
 
 ?>
+
+<?php
+$loginmsg = Session::get("loginmsg");
+if (isset($loginmsg)) {
+	echo $loginmsg;
+}
+Session::set("loginmsg", NULL);
+ ?>
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h2>User List <span class="pull-right"><strong>Welcome! </strong>Monir</span></h2>
+				<h2>User List <span class="pull-right"><strong>Welcome! </strong>
+				<?php 	
+				$name = Session::get('name');
+				if (isset($name)) {
+				 	echo $name;
+				 } 
+				?>
+			</span></h2>
 			</div>
 			<div class="panel-body">
 				<table class="table table-striped">
@@ -15,33 +33,28 @@ include 'inc/header.php';
 					<th width="20%">Email Address</th>
 					<th width="20%">Action</th>
 					</tr>
+					<?php 
+$user = new User();
+$userdata = $user->getUserData();
+if ($userdata) {
+	$i=0;
+	foreach ($userdata as $sdata) {
+		$i++;
+	
+					 ?>
 					<tr>
-						<td>01</td>
-						<td>Md. Monirul Islam</td>
-						<td>monirdhk.it</td>
-						<td>monirdhk.it@gmail.com</td>
+						<td><?php echo $i; ?></td>
+						<td><?php echo $sdata['name']; ?></td>
+						<td><?php echo $sdata['username']; ?></td>
+						<td><?php echo $sdata['email']; ?></td>
 						<td>
-							<a class="btn btn-primary" href="profile.php?id=1">View</a>
+							<a class="btn btn-primary" href="profile.php?id=<?php echo $sdata['id']; ?>">View</a>
 						</td>
 					</tr>
-					<tr>
-						<td>02</td>
-						<td>Md. Nurul Islam</td>
-						<td>nuruldhk.it</td>
-						<td>nuruldhk.it@gmail.com</td>
-						<td>
-							<a class="btn btn-primary" href="profile.php?id=1">View</a>
-						</td>
-					</tr>
-					<tr>
-						<td>03</td>
-						<td>Md. Mahfuz Sumon</td>
-						<td>monirdhk.it</td>
-						<td>monirdhk.it@gmail.com</td>
-						<td>
-							<a class="btn btn-primary" href="profile.php?id=1">View</a>
-						</td>
-					</tr>
+					<?php 	}
+} else { ?>
+<tr><td colspan="5"><h2>No user data found.</h2></td></tr>
+<?php 	} ?>
 				</table>
 			</div>
 		</div>
